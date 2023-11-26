@@ -1,4 +1,7 @@
+import 'dart:math';
+import 'package:logger/logger.dart';
 import 'package:auto_leveling/constant/styles.dart';
+import 'package:auto_leveling/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -11,8 +14,16 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final AuthService _auth = AuthService();
   final _formkey = GlobalKey<FormState>();
   var _isObscured;
+  String name = "";
+  String email = "";
+  String password = "";
+  String re_password = "";
+  String error = "";
+  var logger = Logger();
+
   @override
   void initState() {
     super.initState();
@@ -38,10 +49,13 @@ class _SignupScreenState extends State<SignupScreen> {
                       decoration:
                           inputFormDecoration.copyWith(labelText: 'Name'),
                       keyboardType: TextInputType.emailAddress,
-                      validator: (val) =>
-                          val?.isEmpty == true ? "Enter valid email" : null,
+                      validator: (val) => val?.isEmpty == true
+                          ? "Name should not be empty"
+                          : null,
                       onChanged: (val) {
-                        setState(() {});
+                        setState(() {
+                          name = val;
+                        });
                       },
                     ),
                     const SizedBox(
@@ -50,10 +64,20 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextFormField(
                       decoration: inputFormDecoration,
                       keyboardType: TextInputType.emailAddress,
-                      validator: (val) =>
-                          val?.isEmpty == true ? "Enter valid email" : null,
+                      autocorrect: false,
+                      textCapitalization: TextCapitalization.none,
+                      validator: (val) {
+                        if (val == null ||
+                            val.trim().isEmpty ||
+                            !val.contains('@')) {
+                          return 'Please enter a valid email address';
+                        }
+                        return null;
+                      },
                       onChanged: (val) {
-                        setState(() {});
+                        setState(() {
+                          email = val;
+                        });
                       },
                     ),
                     const SizedBox(
@@ -73,10 +97,17 @@ class _SignupScreenState extends State<SignupScreen> {
                                 ? const Icon(Icons.visibility)
                                 : const Icon(Icons.visibility_off)),
                       ),
-                      validator: (val) =>
-                          val?.isEmpty == true ? "Enter valid password" : null,
+                      validator: (val) {
+                        if (val == null || val.trim().length < 6) {
+                          return "Password must be at least 6 characters";
+                        }
+                        return null;
+                      },
+                      // onSaved: (val) => password = val!,
                       onChanged: (val) {
-                        setState(() {});
+                        setState(() {
+                          password = val;
+                        });
                       },
                     ),
                     const SizedBox(
@@ -85,7 +116,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextFormField(
                       obscureText: _isObscured,
                       decoration: inputFormDecoration.copyWith(
-                        labelText: 'Re-password',
+                        labelText: 'Re-Password',
                         suffixIcon: IconButton(
                             onPressed: () {
                               setState(() {
@@ -96,22 +127,49 @@ class _SignupScreenState extends State<SignupScreen> {
                                 ? const Icon(Icons.visibility)
                                 : const Icon(Icons.visibility_off)),
                       ),
-                      validator: (val) => val?.isEmpty == true
-                          ? "Re-enter same password"
-                          : null,
-                      onChanged: (val) {
-                        setState(() {});
+                      validator: (val) {
+                        if (val != password) {
+                          return "Passwords do not match";
+                        }
+                        return null;
                       },
+                      onSaved: (val) => re_password = val!,
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 2),
+                    child: Text(
+                      error,
+                      style: const TextStyle(
+                          fontSize: 14, color: Colors.redAccent),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 35,
               ),
               ElevatedButton(
                 style: raisedButtonStyle,
-                onPressed: () {},
+                onPressed: () async {
+                  if (_formkey.currentState!.validate()) {
+                    dynamic result = await _auth.registerWithEmailPasword(
+                        email, password, name);
+                    logger.f(result);
+                    if (result == null) {
+                      setState(() {
+                        error = "Please enter valid details";
+                      });
+                    }
+                  }
+                },
                 child: const Text('SIGN UP'),
               ),
               const SizedBox(
@@ -126,9 +184,11 @@ class _SignupScreenState extends State<SignupScreen> {
                         'Already have an account ?',
                         style: TextStyle(fontSize: 16),
                       ),
-                      TextButton(onPressed: () {
-                        widget.toggle();
-                      }, child: const Text('SIGN IN'))
+                      TextButton(
+                          onPressed: () {
+                            widget.toggle();
+                          },
+                          child: const Text('SIGN IN'))
                     ],
                   ),
                 ],

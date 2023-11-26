@@ -32,5 +32,6 @@ ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
   ),
 );
 
-// heading style
+// font style
 const TextStyle headerStyle = TextStyle(color: bgBlack, fontSize: 22, fontWeight: FontWeight.w500);
+const TextStyle primaryFontStyle = TextStyle(color: bgBlack, fontSize: 18, fontWeight: FontWeight.w400);

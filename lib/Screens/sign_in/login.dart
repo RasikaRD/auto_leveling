@@ -1,5 +1,7 @@
+import 'package:auto_leveling/Screens/sign_in/froget_password.dart';
 import 'package:auto_leveling/constant/colors.dart';
 import 'package:auto_leveling/constant/styles.dart';
+import 'package:auto_leveling/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -11,8 +13,13 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
+  final AuthService _auth = AuthService();
   final _formkey = GlobalKey<FormState>();
   var _isObscured;
+
+  String email = "";
+  String password = "";
+  String error = "";
 
   @override
   void initState() {
@@ -39,7 +46,9 @@ class _LogInScreenState extends State<LogInScreen> {
               const SizedBox(height: 15),
               OutlinedButton(
                   style: outlineButton,
-                  onPressed: () {},
+                  onPressed: () async {
+                    await _auth.signInAnonymously();
+                  },
                   child: const Text(
                     'CONTINUE AS GUEST',
                     style: TextStyle(color: primaryBlue),
@@ -56,7 +65,9 @@ class _LogInScreenState extends State<LogInScreen> {
                       validator: (val) =>
                           val?.isEmpty == true ? "Enter valid email" : null,
                       onChanged: (val) {
-                        setState(() {});
+                        setState(() {
+                          email = val;
+                        });
                       },
                     ),
                     const SizedBox(
@@ -79,25 +90,46 @@ class _LogInScreenState extends State<LogInScreen> {
                       validator: (val) =>
                           val?.isEmpty == true ? "Enter valid password" : null,
                       onChanged: (val) {
-                        setState(() {});
+                        setState(() {
+                          password = val;
+                        });
                       },
                     ),
                   ],
                 ),
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 2),
+                    child: Text(
+                      error,
+                      style: const TextStyle(
+                          fontSize: 14, color: Colors.redAccent),
+                    ),
+                  ),
+                ],
               ),
               Column(
                 children: [
                   Row(
                     children: [
                       const Padding(
-                        padding: EdgeInsets.only(left: 10),
+                        padding: EdgeInsets.only(left: 10, top: 0),
                         child: Text(
                           'Forgot Password ?',
                           style: TextStyle(fontSize: 16),
                         ),
                       ),
                       TextButton(
-                          onPressed: () {}, child: const Text('CLICK HERE'))
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const FrogetPasswordScreen()),
+                            );
+                          },
+                          child: const Text('CLICK HERE'))
                     ],
                   ),
                 ],
@@ -107,7 +139,15 @@ class _LogInScreenState extends State<LogInScreen> {
               ),
               ElevatedButton(
                 style: raisedButtonStyle,
-                onPressed: () {},
+                onPressed: () async {
+                  dynamic result =
+                      await _auth.signUpWithEmailPasword(email, password);
+                  if (result == null) {
+                    setState(() {
+                      error = " Wrong user credintials";
+                    });
+                  }
+                },
                 child: const Text('SIGN IN'),
               ),
               const SizedBox(
