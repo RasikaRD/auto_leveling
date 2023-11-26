@@ -1,7 +1,10 @@
 import 'package:auto_leveling/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class AuthService {
+  var logger = Logger();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   UserModel? _userWithFirbaseUserUid(User? user) {
@@ -17,16 +20,19 @@ class AuthService {
     try {
       UserCredential result = await _auth.signInAnonymously();
       User? user = result.user;
-      print(user);
+      logger.f(user);
+
       return _userWithFirbaseUserUid(user);
     } catch (e) {
-      print(e.toString());
+      logger.f(e);
+
       return null;
     }
   }
 
 // register using email & password
-  Future registerWithEmailPasword(String email, String password, String name) async {
+  Future registerWithEmailPasword(
+      String email, String password, String name) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -34,7 +40,8 @@ class AuthService {
       user?.updateProfile(displayName: name);
       return _userWithFirbaseUserUid(user);
     } catch (e) {
-      print(e.toString());
+      logger.f(e);
+
       return null;
     }
   }
@@ -47,7 +54,8 @@ class AuthService {
       User? user = result.user;
       return _userWithFirbaseUserUid(user);
     } catch (e) {
-      print(e.toString());
+      logger.f(e);
+
       return null;
     }
   }
@@ -57,8 +65,18 @@ class AuthService {
     try {
       return await _auth.signOut();
     } catch (e) {
-      print(e.toString());
+      logger.f(e);
+
       return null;
+    }
+  }
+
+  // reset password
+  Future resetPassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } catch (e) {
+      logger.f(e);
     }
   }
 }
