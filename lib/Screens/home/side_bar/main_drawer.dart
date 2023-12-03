@@ -1,5 +1,6 @@
 import 'package:auto_leveling/Screens/home/about_app_screen.dart';
-import 'package:auto_leveling/Screens/home/profile.dart';
+import 'package:auto_leveling/Screens/home/side_bar/profile.dart';
+import 'package:auto_leveling/Screens/home/side_bar/settings.dart';
 import 'package:auto_leveling/constant/texts.dart';
 import 'package:auto_leveling/services/auth.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,11 @@ class MainDrawer extends StatelessWidget {
               'Settings',
               style: primaryFontStyle,
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const SettingScreen(),
+              ));
+            },
           ),
           ListTile(
             leading: const Icon(Icons.list_alt_outlined),

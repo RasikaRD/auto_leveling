@@ -1,5 +1,4 @@
 import 'package:auto_leveling/constant/colors.dart';
-import 'package:auto_leveling/constant/styles.dart';
 import 'package:auto_leveling/constant/texts.dart';
 import 'package:auto_leveling/widgets/navbar.dart';
 import 'package:flutter/material.dart';
