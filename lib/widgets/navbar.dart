@@ -1,6 +1,7 @@
 import 'package:auto_leveling/constant/colors.dart';
 import 'package:auto_leveling/constant/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -24,15 +25,15 @@ class _BottomNavBarState extends State<BottomNavBar> {
       iconSize: 25,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
+          icon: Icon(Iconsax.home_2),
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.add_box_outlined),
+          icon: Icon(Iconsax.add_square),
           label: 'Level Line',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.list),
+          icon: Icon(Iconsax.document),
           label: 'Documents',
         ),
       ],

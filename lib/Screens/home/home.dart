@@ -39,7 +39,7 @@ class Home extends StatelessWidget {
                 children: [
                   const Text(
                     'Ongoing Projects',
-                    style: primaryFontStyle,
+                    style: homeText,
                   ),
                   const SizedBox(height: 15.0),
                   SingleChildScrollView(
@@ -49,7 +49,7 @@ class Home extends StatelessWidget {
                         GestureDetector(
                           onTap: () {},
                           child: Container(
-                            width: 130,
+                            width: 110,
                             height: 130,
                             decoration: tileDecoration,
                             padding: const EdgeInsets.symmetric(
@@ -76,7 +76,7 @@ class Home extends StatelessWidget {
                         GestureDetector(
                           onTap: () {},
                           child: Container(
-                            width: 130,
+                            width: 110,
                             height: 130,
                             decoration: tileDecoration,
                             padding: const EdgeInsets.symmetric(
@@ -103,7 +103,34 @@ class Home extends StatelessWidget {
                         GestureDetector(
                           onTap: () {},
                           child: Container(
-                            width: 130,
+                            width: 110,
+                            height: 130,
+                            decoration: tileDecoration,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 12),
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Iconsax.edit,
+                                  color: Colors.black,
+                                  size: 25,
+                                ),
+                                SizedBox(height: 8.0),
+                                Text(
+                                  'WGA-255 ICS/LHS ...',
+                                  style: tileTextStyle,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10.0),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            width: 110,
                             height: 130,
                             decoration: tileDecoration,
                             padding: const EdgeInsets.symmetric(
@@ -137,7 +164,7 @@ class Home extends StatelessWidget {
                 children: [
                   const Text(
                     'New Project',
-                    style: primaryFontStyle,
+                    style: homeText,
                   ),
                   const SizedBox(height: 15.0),
                   SingleChildScrollView(
@@ -235,7 +262,7 @@ class Home extends StatelessWidget {
                     children: [
                       const Text(
                         'Calculations',
-                        style: primaryFontStyle,
+                        style: homeText,
                       ),
                       const SizedBox(height: 15.0),
                       SingleChildScrollView(
@@ -310,7 +337,7 @@ class Home extends StatelessWidget {
                     children: [
                       const Text(
                         'Documents',
-                        style: primaryFontStyle,
+                        style: homeText,
                       ),
                       const SizedBox(height: 15.0),
                       SingleChildScrollView(

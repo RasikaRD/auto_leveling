@@ -37,9 +37,23 @@ const TextStyle bodyTextStyle = TextStyle(
   fontFamily: 'Inter',
 );
 
+const TextStyle tileTextStyle = TextStyle(
+  color: bgBlack,
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Inter',
+);
+
 const TextStyle grayTextStyle = TextStyle(
   color: bgBlack,
   fontSize: 14,
   fontWeight: FontWeight.w300,
+  fontFamily: 'Inter',
+);
+
+const TextStyle homeText = TextStyle(
+  color: bgBlack,
+  fontSize: 20,
+  fontWeight: FontWeight.w600,
   fontFamily: 'Inter',
 );
