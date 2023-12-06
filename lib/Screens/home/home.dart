@@ -1,12 +1,12 @@
-import 'package:auto_leveling/Screens/about_app_screen.dart';
 import 'package:auto_leveling/Screens/documents/documents.dart';
-import 'package:auto_leveling/widgets/main_drawer.dart';
+import 'package:auto_leveling/Screens/home/side_bar/main_drawer.dart';
 import 'package:auto_leveling/constant/colors.dart';
 import 'package:auto_leveling/constant/styles.dart';
+import 'package:auto_leveling/constant/texts.dart';
 import 'package:auto_leveling/services/auth.dart';
 import 'package:auto_leveling/widgets/navbar.dart';
-import 'package:auto_leveling/widgets/navbar2.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -17,18 +17,6 @@ class Home extends StatelessWidget {
     const index = 0;
     return Scaffold(
       appBar: AppBar(
-        // leading: ElevatedButton(
-        //   onPressed: () {
-        //     Navigator.of(context).push(MaterialPageRoute(
-        //       builder: (context) => const MenuScreen(),
-        //     ));
-        //   },
-        //   style: ElevatedButton.styleFrom(
-        //       foregroundColor: Colors.black,
-        //       backgroundColor: Colors.white,
-        //       elevation: 0),
-        //   child: const Icon(Icons.menu_rounded),
-        // ),
         title: const Text(
           'Auto Leveling',
           style: headerStyle,
@@ -41,227 +29,361 @@ class Home extends StatelessWidget {
       ),
       drawer: const MainDrawer(),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: 175,
-                    height: 130,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(51, 173, 173, 173),
-                      border: Border.all(
-                          color: const Color.fromARGB(255, 83, 83, 83)),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-                    margin: const EdgeInsets.all(8),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        padding: const EdgeInsets.symmetric(horizontal: 22),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 70.0),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Ongoing Projects',
+                    style: primaryFontStyle,
+                  ),
+                  const SizedBox(height: 15.0),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
                       children: [
-                        Icon(
-                          Icons.error_outline,
-                          color: Colors.black,
-                          size: 40,
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            width: 130,
+                            height: 130,
+                            decoration: tileDecoration,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 12),
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Iconsax.edit,
+                                  color: Colors.black,
+                                  size: 25,
+                                ),
+                                SizedBox(height: 5.0),
+                                Text(
+                                  'Kandy- Road ICS...',
+                                  style: tileTextStyle,
+                                )
+                              ],
+                            ),
+                          ),
                         ),
-                        SizedBox(height: 8.0),
-                        Text(
-                          'Collimation error',
-                          style: primaryFontStyle,
-                        )
+                        const SizedBox(width: 10.0),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            width: 130,
+                            height: 130,
+                            decoration: tileDecoration,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 12),
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Iconsax.edit,
+                                  color: Colors.black,
+                                  size: 25,
+                                ),
+                                SizedBox(height: 8.0),
+                                Text(
+                                  'Water Project - Mahara',
+                                  style: tileTextStyle,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10.0),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            width: 130,
+                            height: 130,
+                            decoration: tileDecoration,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 12),
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Iconsax.edit,
+                                  color: Colors.black,
+                                  size: 25,
+                                ),
+                                SizedBox(height: 8.0),
+                                Text(
+                                  'CP-03 section/5B ...',
+                                  style: tileTextStyle,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: 175,
-                    height: 130,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(51, 173, 173, 173),
-                      border: Border.all(
-                          color: const Color.fromARGB(255, 83, 83, 83)),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-                    margin: const EdgeInsets.all(8),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                ],
+              ),
+              const SizedBox(height: 50.0),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'New Project',
+                    style: primaryFontStyle,
+                  ),
+                  const SizedBox(height: 15.0),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
                       children: [
-                        Icon(
-                          Icons.add_box_outlined,
-                          color: Colors.black,
-                          size: 40,
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            width: 130,
+                            height: 130,
+                            decoration: tileDecoration,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 12),
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Iconsax.add_square,
+                                  color: Colors.black,
+                                  size: 30,
+                                ),
+                                SizedBox(height: 5.0),
+                                Text(
+                                  'Level Setting Out',
+                                  style: tileTextStyle,
+                                )
+                              ],
+                            ),
+                          ),
                         ),
-                        SizedBox(height: 8.0),
-                        Text(
-                          'Level Line',
-                          style: primaryFontStyle,
-                        )
+                        const SizedBox(width: 10.0),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            width: 130,
+                            height: 130,
+                            decoration: tileDecoration,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 12),
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Iconsax.activity,
+                                  color: Colors.black,
+                                  size: 30,
+                                ),
+                                SizedBox(height: 8.0),
+                                Text(
+                                  'Level Line',
+                                  style: tileTextStyle,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10.0),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            width: 130,
+                            height: 130,
+                            decoration: tileDecoration,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 12),
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Iconsax.chart,
+                                  color: Colors.black,
+                                  size: 30,
+                                ),
+                                SizedBox(height: 8.0),
+                                Text(
+                                  'ICS',
+                                  style: tileTextStyle,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: 175,
-                    height: 130,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(51, 173, 173, 173),
-                      border: Border.all(
-                          color: const Color.fromARGB(255, 83, 83, 83)),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-                    margin: const EdgeInsets.all(8),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Icon(
-                          Icons.add_box_outlined,
-                          color: Colors.black,
-                          size: 40,
-                        ),
-                        SizedBox(height: 8.0),
-                        Text(
-                          'Level Setting Out',
-                          style: primaryFontStyle,
-                        )
-                      ],
-                    ),
+                  const SizedBox(
+                    height: 50,
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const DocumentsScreen(),
-                    ));
-                  },
-                  child: Container(
-                    width: 175,
-                    height: 130,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(51, 173, 173, 173),
-                      border: Border.all(
-                          color: const Color.fromARGB(255, 83, 83, 83)),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-                    margin: const EdgeInsets.all(8),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Icon(
-                          Icons.content_paste,
-                          color: Colors.black,
-                          size: 40,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Calculations',
+                        style: primaryFontStyle,
+                      ),
+                      const SizedBox(height: 15.0),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                width: 130,
+                                height: 130,
+                                decoration: tileDecoration,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 12),
+                                child: const Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Iconsax.calculator,
+                                      color: Colors.black,
+                                      size: 30,
+                                    ),
+                                    SizedBox(height: 5.0),
+                                    Text(
+                                      'Collimation Error',
+                                      style: tileTextStyle,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10.0),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                width: 130,
+                                height: 130,
+                                decoration: tileDecoration,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 12),
+                                child: const Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Iconsax.convert,
+                                      color: Colors.black,
+                                      size: 30,
+                                    ),
+                                    SizedBox(height: 8.0),
+                                    Text(
+                                      'Converter',
+                                      style: tileTextStyle,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 8.0),
-                        Text(
-                          'Documents',
-                          style: primaryFontStyle,
-                        )
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: 175,
-                    height: 130,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(51, 173, 173, 173),
-                      border: Border.all(
-                          color: const Color.fromARGB(255, 83, 83, 83)),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-                    margin: const EdgeInsets.all(8),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Icon(
-                          Icons.settings_outlined,
-                          color: Colors.black,
-                          size: 40,
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Documents',
+                        style: primaryFontStyle,
+                      ),
+                      const SizedBox(height: 15.0),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                width: 130,
+                                height: 130,
+                                decoration: tileDecoration,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 12),
+                                child: const Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Iconsax.printer,
+                                      color: Colors.black,
+                                      size: 30,
+                                    ),
+                                    SizedBox(height: 5.0),
+                                    Text(
+                                      'Projects',
+                                      style: tileTextStyle,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10.0),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                width: 130,
+                                height: 130,
+                                decoration: tileDecoration,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 12),
+                                child: const Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Iconsax.location,
+                                      color: Colors.black,
+                                      size: 30,
+                                    ),
+                                    SizedBox(height: 8.0),
+                                    Text(
+                                      'Bench marks',
+                                      style: tileTextStyle,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 8.0),
-                        Text(
-                          'Settings',
-                          style: primaryFontStyle,
-                        )
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const AboutApp()),
-                    );
-                  },
-                  child: Container(
-                    width: 175,
-                    height: 130,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(51, 173, 173, 173),
-                      border: Border.all(
-                          color: const Color.fromARGB(255, 83, 83, 83)),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-                    margin: const EdgeInsets.all(8),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Icon(
-                          Icons.phone_android,
-                          color: Colors.black,
-                          size: 40,
-                        ),
-                        SizedBox(height: 8.0),
-                        Text(
-                          'About App',
-                          style: primaryFontStyle,
-                        )
-                      ],
-                    ),
+                  const SizedBox(
+                    height: 50,
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: const BottomNavBar(),
