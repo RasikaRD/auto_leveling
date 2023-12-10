@@ -57,3 +57,10 @@ const TextStyle homeText = TextStyle(
   fontWeight: FontWeight.w600,
   fontFamily: 'Inter',
 );
+
+const TextStyle warningText = TextStyle(
+  color: warningColor,
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Inter',
+);
