@@ -1,5 +1,6 @@
 import 'package:auto_leveling/Screens/documents/documents.dart';
 import 'package:auto_leveling/Screens/home/side_bar/main_drawer.dart';
+import 'package:auto_leveling/Screens/level_line/level_line_start.dart';
 import 'package:auto_leveling/Screens/level_setting_out/level_setting_out.dart';
 import 'package:auto_leveling/constant/colors.dart';
 import 'package:auto_leveling/constant/styles.dart';
@@ -204,7 +205,11 @@ class Home extends StatelessWidget {
                         ),
                         const SizedBox(width: 10.0),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const LevelLineScreen(),
+                                ));
+                          },
                           child: Container(
                             width: 130,
                             height: 130,
