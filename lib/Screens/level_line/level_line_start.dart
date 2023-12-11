@@ -28,7 +28,7 @@ class _LevelLineScreenState extends State<LevelLineScreen> {
         elevation: 1,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(22.0),
+        padding: const EdgeInsets.symmetric(horizontal: 22.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +37,7 @@ class _LevelLineScreenState extends State<LevelLineScreen> {
                 height: 40,
               ),
               const Text(
-                'Project details',
+                'Project Details',
                 style: primaryFontStyle,
               ),
               const SizedBox(
@@ -97,7 +97,7 @@ class _LevelLineScreenState extends State<LevelLineScreen> {
                         },
                       ),
                       const SizedBox(
-                        height: 25,
+                        height: 20,
                       ),
                       TextFormField(
                         decoration: inputFormDecoration.copyWith(
@@ -114,19 +114,17 @@ class _LevelLineScreenState extends State<LevelLineScreen> {
                         },
                       ),
                       const SizedBox(
-                        height: 25,
+                        height: 20,
                       ),
-                      const Divider(
-                        height: 30,
-                        thickness: 1,
-                        color: Color.fromARGB(255, 83, 83, 83),
-                      ),
-                      const SizedBox(
-                        height: 25,
-                      ),
+                      // const Divider(
+                      //   height: 40,
+                      //   thickness: 1,
+                      //   color: Color.fromARGB(255, 83, 83, 83),
+                      // ),
                       TextFormField(
                         decoration: inputFormDecoration.copyWith(
-                            labelText: 'Start point', hintText: 'ex: GPS02'),
+                            labelText: 'Start TBM point',
+                            hintText: 'ex: GPS02'),
                         validator: (val) {
                           if (val == null || val.isEmpty) {
                             return "Enter Start point name";
@@ -138,12 +136,12 @@ class _LevelLineScreenState extends State<LevelLineScreen> {
                         },
                       ),
                       const SizedBox(
-                        height: 25,
+                        height: 20,
                       ),
                       TextFormField(
                         keyboardType: TextInputType.number,
                         decoration: inputFormDecoration.copyWith(
-                            labelText: 'Reduced level',
+                            labelText: 'Start Point Reduced level',
                             hintText: 'ex: 102.635'),
                         validator: (val) {
                           if (val == null || val.isEmpty) {
@@ -210,7 +208,8 @@ class _LevelLineScreenState extends State<LevelLineScreen> {
                             style: raisedButtonStyle,
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>const LevelLineAddPointScreen(),
+                                builder: (context) =>
+                                    const LevelLineAddPointScreen(),
                               ));
                             },
                             child: const Text('NEXT'),
