@@ -1,7 +1,7 @@
 import 'package:auto_leveling/constant/colors.dart';
 import 'package:auto_leveling/constant/styles.dart';
 import 'package:auto_leveling/constant/texts.dart';
-import 'package:auto_leveling/widgets/navbar.dart';
+import 'package:auto_leveling/Screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
@@ -43,7 +43,6 @@ class _SettingOutScreenState extends State<SettingOutScreen> {
       appBar: AppBar(
         title: const Text(
           'Level Setting Out',
-          style: headerStyle,
           textAlign: TextAlign.center,
         ),
         backgroundColor: bgWhite,
@@ -143,7 +142,7 @@ class _SettingOutScreenState extends State<SettingOutScreen> {
                       height: 40,
                     ),
                     ElevatedButton(
-                      style: raisedButtonStyle,
+                      style: primaryButtonStyle,
                       onPressed: () {
                         if (_formkey.currentState!.validate()) {
                           calculateStaffReading();
@@ -179,7 +178,7 @@ class _SettingOutScreenState extends State<SettingOutScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }

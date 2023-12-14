@@ -1,6 +1,6 @@
 import 'package:auto_leveling/constant/colors.dart';
 import 'package:auto_leveling/constant/texts.dart';
-import 'package:auto_leveling/widgets/navbar.dart';
+import 'package:auto_leveling/Screens/home.dart';
 import 'package:flutter/material.dart';
 
 class AboutApp extends StatelessWidget {
@@ -70,7 +70,7 @@ class AboutApp extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }

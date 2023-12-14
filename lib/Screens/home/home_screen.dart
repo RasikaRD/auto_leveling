@@ -1,4 +1,4 @@
-import 'package:auto_leveling/Screens/bench_marks/bench_marks.dart';
+import 'package:auto_leveling/Screens/benchmarks/benchmarks_list.dart';
 import 'package:auto_leveling/Screens/documents/documents.dart';
 import 'package:auto_leveling/Screens/home/side_bar/main_drawer.dart';
 import 'package:auto_leveling/Screens/level_line/level_line.dart';
@@ -7,18 +7,23 @@ import 'package:auto_leveling/constant/colors.dart';
 import 'package:auto_leveling/constant/styles.dart';
 import 'package:auto_leveling/constant/texts.dart';
 import 'package:auto_leveling/services/auth.dart';
-import 'package:auto_leveling/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool ongoingProject = false;
+  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     final AuthService _auth = AuthService();
-    bool ongoingProject = false;
-    const index = 0;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -59,7 +64,7 @@ class Home extends StatelessWidget {
                           onTap: () {},
                           child: Container(
                             margin: const EdgeInsets.only(right: 10),
-                            width: 110,
+                            width: 130,
                             height: 130,
                             decoration: tileDecoration,
                             padding: const EdgeInsets.symmetric(
@@ -167,9 +172,9 @@ class Home extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 10.0),
-        
+
                         // version 1.1**********
-        
+
                         // GestureDetector(
                         //   onTap: () {},
                         //   child: Container(
@@ -204,9 +209,9 @@ class Home extends StatelessWidget {
               const SizedBox(
                 height: 60,
               ),
-        
+
               // version 1.1**********
-        
+
               // Column(
               //   crossAxisAlignment: CrossAxisAlignment.start,
               //   children: [
@@ -317,9 +322,9 @@ class Home extends StatelessWidget {
                                   color: Colors.black,
                                   size: 30,
                                 ),
-                                SizedBox(height: 5.0),
+                                // SizedBox(height: 5.0),
                                 Text(
-                                  'Projects',
+                                  'Completed Projects',
                                   style: tileTextStyle,
                                 )
                               ],
@@ -350,7 +355,7 @@ class Home extends StatelessWidget {
                                 ),
                                 SizedBox(height: 8.0),
                                 Text(
-                                  'Bench marks',
+                                  'Benchmark List',
                                   style: tileTextStyle,
                                 )
                               ],
@@ -369,7 +374,7 @@ class Home extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      
     );
   }
 }
