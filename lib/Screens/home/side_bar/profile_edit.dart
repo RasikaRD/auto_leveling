@@ -24,7 +24,6 @@ class _ProfileEditState extends State<ProfileEdit> {
       appBar: AppBar(
         title: const Text(
           'Profile Details',
-          style: headerStyle,
           textAlign: TextAlign.center,
         ),
         backgroundColor: bgWhite,
@@ -89,7 +88,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                       height: 70,
                     ),
                     ElevatedButton(
-                      style: raisedButtonStyle,
+                      style: primaryButtonStyle,
                       onPressed: () async {},
                       child: const Text('SAVE'),
                     ),

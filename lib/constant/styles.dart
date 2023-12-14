@@ -22,7 +22,7 @@ ButtonStyle outlineButton = OutlinedButton.styleFrom(
     side: const BorderSide(color: primaryBlue, width: 1));
 
 // primary button
-ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
+ButtonStyle primaryButtonStyle = ElevatedButton.styleFrom(
   backgroundColor: primaryBlue,
   fixedSize: const Size.fromWidth(386),
   textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
@@ -39,3 +39,9 @@ BoxDecoration tileDecoration = BoxDecoration(
   borderRadius: BorderRadius.circular(20.0),
 );
 
+// Topic background style
+BoxDecoration topicDecoration = BoxDecoration(
+  color: const Color.fromARGB(51, 173, 173, 173),
+  border: Border.all(color: const Color.fromARGB(255, 83, 83, 83)),
+  borderRadius: BorderRadius.circular(5.0),
+);

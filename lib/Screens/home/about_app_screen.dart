@@ -12,7 +12,6 @@ class AboutApp extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'About',
-          style: headerStyle,
           textAlign: TextAlign.center,
         ),
         backgroundColor: bgWhite,

@@ -33,7 +33,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ],
         title: const Text(
           'Profile Details',
-          style: headerStyle,
           textAlign: TextAlign.center,
         ),
         backgroundColor: bgWhite,
