@@ -2,7 +2,6 @@ import 'package:auto_leveling/Screens/documents/documents.dart';
 import 'package:auto_leveling/Screens/home/home_screen.dart';
 import 'package:auto_leveling/Screens/level_line/level_line.dart';
 import 'package:auto_leveling/constant/colors.dart';
-import 'package:auto_leveling/constant/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -53,7 +52,7 @@ class _HomeState extends State<Home> {
         onTap: _onItemTapped,
         backgroundColor: bgWhite,
         selectedFontSize: 14,
-        elevation: 1,
+        elevation: 5,
       ),
     );
   }

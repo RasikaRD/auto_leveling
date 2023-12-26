@@ -1,6 +1,6 @@
-import 'package:auto_leveling/Screens/sign_in/login.dart';
 import 'package:auto_leveling/constant/colors.dart';
 import 'package:auto_leveling/constant/styles.dart';
+import 'package:auto_leveling/constant/texts.dart';
 import 'package:auto_leveling/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -26,7 +26,6 @@ class _FrogetPasswordScreenState extends State<FrogetPasswordScreen> {
         toolbarHeight: 85,
         title: const Text(
           'RESET PASSWORD',
-          style: headerStyle,
           textAlign: TextAlign.center,
         ),
         backgroundColor: bgWhite,
@@ -71,7 +70,7 @@ class _FrogetPasswordScreenState extends State<FrogetPasswordScreen> {
               ),
               ElevatedButton.icon(
                 icon: const Icon(Icons.email_outlined),
-                style: raisedButtonStyle,
+                style: primaryButtonStyle,
                 onPressed: () async {
                   if (_formkey.currentState!.validate()) {
                     dynamic result = await _auth.resetPassword(email);

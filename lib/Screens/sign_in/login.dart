@@ -54,7 +54,7 @@ class _LogInScreenState extends State<LogInScreen> {
                     style: TextStyle(color: primaryBlue),
                   )),
               const SizedBox(height: 25),
-              const Text('Or', style: TextStyle(fontSize: 18)),
+              const Text('or', style: TextStyle(fontSize: 18)),
               const SizedBox(height: 25),
               Form(
                 key: _formkey,
@@ -138,7 +138,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 height: 25,
               ),
               ElevatedButton(
-                style: raisedButtonStyle,
+                style: primaryButtonStyle,
                 onPressed: () async {
                   dynamic result =
                       await _auth.signUpWithEmailPasword(email, password);

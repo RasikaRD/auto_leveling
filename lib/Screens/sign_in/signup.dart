@@ -1,9 +1,8 @@
-import 'dart:math';
+import 'package:auto_leveling/constant/texts.dart';
 import 'package:logger/logger.dart';
 import 'package:auto_leveling/constant/styles.dart';
 import 'package:auto_leveling/services/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class SignupScreen extends StatefulWidget {
   final Function toggle;
@@ -157,7 +156,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 35,
               ),
               ElevatedButton(
-                style: raisedButtonStyle,
+                style: primaryButtonStyle,
                 onPressed: () async {
                   if (_formkey.currentState!.validate()) {
                     dynamic result = await _auth.registerWithEmailPasword(
